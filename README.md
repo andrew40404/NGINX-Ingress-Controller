@@ -8,7 +8,7 @@
 
 - Search for **Kubernetes Service** and click on it
 
-  ![mongodb_html_46d1c04e26ba5eea](https://user-images.githubusercontent.com/5286796/106396731-ccf85780-642f-11eb-8c16-0713b80f4624.png)
+  ![NGINX Ingress controller install on IBM cloud_html_46d1c04e26ba5eea](https://user-images.githubusercontent.com/5286796/106413417-02bd3080-6470-11eb-8975-df01d2db26fb.png)
 
 - You are now at the Kubernetes deployment page. You need to specify some details about the cluster
 
@@ -24,13 +24,13 @@
 
 - Choose **classic** or **VPC** , read the docs and choose the most suitable type for yourself
 
-  ![mongodb_html_4d3a968071544952](https://user-images.githubusercontent.com/5286796/106396730-cc5fc100-642f-11eb-805a-c92dce6532b3.png)
+  ![NGINX Ingress controller install on IBM cloud_html_4d3a968071544952](https://user-images.githubusercontent.com/5286796/106413412-005ad680-6470-11eb-909b-607149b4ca9a.png)
 
 - Now choose your location settings,
 
 - Choose **Geography** (continent)
 
-![mongodb_html_72496e6b0b2c820d](https://user-images.githubusercontent.com/5286796/106396727-cb2e9400-642f-11eb-8791-bfb29ef4875c.png)
+![NGINX Ingress controller install on IBM cloud_html_72496e6b0b2c820d](https://user-images.githubusercontent.com/5286796/106413409-fe911300-646f-11eb-88ef-f5862350480d.png)
 
 -   Choose 	Single or Multizone, in single zone your data is only kept in on 	datacenter, on the
 
@@ -58,36 +58,36 @@ The Block Storage plug-in is a persistent, high-performance iSCSI storage that y
 
 - Search for **IBM Cloud Block Storage plug-in** and click on it
   
-   ![mongodb_html_80e526461a17c251](https://user-images.githubusercontent.com/5286796/106396725-c9fd6700-642f-11eb-8606-71998e0bbbc2.png)
+   ![NGINX Ingress controller install on IBM cloud_html_80e526461a17c251](https://user-images.githubusercontent.com/5286796/106413402-fd5fe600-646f-11eb-8218-804df318df48.png)
    
    • On the application page Click in the dot next to the cluster, you wish to use
    • Click on Enter or Select Namespace and choose the default Namespace or use a custom one (if you get error please wait 30 minutes for the cluster to finalize)
    
-   ![mongodb_html_c5a3e57a3c6cd652](https://user-images.githubusercontent.com/5286796/106396724-c964d080-642f-11eb-8e55-c82480054778.png)
+   ![NGINX Ingress controller install on IBM cloud_html_c5a3e57a3c6cd652](https://user-images.githubusercontent.com/5286796/106413398-fc2eb900-646f-11eb-9cfb-72d7c56425cf.png)
    
 - Give a **name** to this workspace
 
 - Click **install** and wait for the deployment
 
-![mongodb_html_bcca9b451248ae84](https://user-images.githubusercontent.com/5286796/106396722-c79b0d00-642f-11eb-81f9-084f9c9f04be.png)
+![NGINX Ingress controller install on IBM cloud_html_bcca9b451248ae84](https://user-images.githubusercontent.com/5286796/106413391-fa64f580-646f-11eb-9103-741f32b89b6b.png)
 
 # **Step 3 **Installing **NGINX Ingress controller**
 
 By default, the Ingress Controller requires a number of custom resource definitions (CRDs) installed on the cluster. Helm 3.x client will install those CRDs. If you’re using a Helm 2.x client, you need to install the CRDs via kubectl:
 
-
-
+```sh
 $ kubectl create -f crds/
-
-
+```
 
 Change your working directory to /deployments/helm-chart:
 
+```sh
+$ cd kubernetes-ingress/deployments/helm-chart
+
+$ git checkout v1.9.1
+```
 
 
-*$* *cd* *kubernetes-ingress/deployments/helm-chart*
-
-*$* *git checkout v1.9.1*
 
 ##    
 
@@ -95,106 +95,84 @@ Change your working directory to /deployments/helm-chart:
 
 This step is required if you’re installing the chart via the helm repository.
 
-*$* *helm repo add nginx-stable https://helm.nginx.com/stable*
+###  
 
-*$* *helm repo update*
+```sh
+$ helm repo add nginx-stable https://helm.nginx.com/stable
 
-###    
+$ helm repo update
+```
 
 ### **Installing via Helm Repository**
 
 To install the chart with the release name my-release (my-release is the name that you choose):
 
-- 
-- ​	Using Helm 3.x client:
+- Using Helm 3.x client:
 
 For NGINX:
 
+```sh
 *$* *helm install my-release nginx-stable/nginx-ingress*
-
-
+```
 
 For NGINX Plus: (assuming you have pushed the Ingress controller image nginx-plus-ingress to your private registry myregistry.example.com)
 
-
-
+```sh
 *$* *helm install my-release nginx-stable/nginx-ingress --set controller.image.repository**=**myregistry.example.com/nginx-plus-ingress --set controller.nginxplus**=**true*
+```
 
-
-
-- 
-- ​	Using Helm 2.x client:
-
-
+- Using Helm 2.x client:
 
 For NGINX:
 
-
-
+```sh
 $ helm install --name my-release nginx-stable/nginx-ingress
-
-
+```
 
 For NGINX Plus: (assuming you have pushed the Ingress controller image nginx-plus-ingress to your private registry myregistry.example.com)
 
-
-
+```sh
 $ helm install --name my-release nginx-stable/nginx-ingress --set controller.image.repository=myregistry.example.com/ng
-
-
+```
 
 ## **Upgrading the Chart**
 
 
- 
-
-### **Upgrading the CRDs**
-
-
- 
+ **Upgrading the CRDs**
 
 **Note**: If you’re using Kubernetes 1.14, make sure to add --validate=false to the kubectl apply command below.
 
-
- 
-
 Helm does not upgrade the CRDs during a release upgrade. Before you upgrade a release, run the following command to upgrade the CRDs:
 
-
- 
-
+```sh
 $ kubectl apply -f crds/
+```
 
 
- 
 
 Note: The following warning is expected and can be ignored: Warning: kubectl apply should be used on resource created by either kubectl create --save-config or kubectl apply.
 
-###    
+###  
 
 ### **Upgrading the Release**
 
 To upgrade the release my-release:
 
-
-
 #### **Upgrade Using Chart Sources:**
 
+####  
 
-
+```sh
 $ helm upgrade my-release .
-
-####    
+```
 
 #### **Upgrade via Helm Repository:**
 
-
-
+```sh
 $ helm upgrade my-release nginx-stable/nginx-ingress
+```
 
-##    
-
-## **Uninstalling the Chart**
+##  **Uninstalling the Chart**
 
 
 
@@ -203,9 +181,18 @@ $ helm upgrade my-release nginx-stable/nginx-ingress
 To uninstall/delete the release my-release:
 
 - Using Helm 3.x client:
-- $ helm uninstall my-release
+
+- ```sh
+  $ helm uninstall my-release
+  ```
+
 - Using Helm 2.x client:
-- $ helm delete --purge my-release
+
+- ```sh
+  $ helm delete --purge my-release
+  ```
+
+  
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
 
@@ -213,7 +200,9 @@ The command removes all the Kubernetes components associated with the chart and 
 
 Uninstalling the release does not remove the CRDs. To remove the CRDs, run:
 
+```sh
 $ kubectl delete -f crds/
+```
 
 
  
