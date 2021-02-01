@@ -203,6 +203,8 @@ Uninstalling the release does not remove the CRDs. To remove the CRDs, run:
 ```sh
 $ kubectl delete -f crds/
 ```
+The installation is done. Enjoy!
+
 
 
  
