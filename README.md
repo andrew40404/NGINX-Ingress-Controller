@@ -168,9 +168,9 @@ To uninstall/delete the release my-release:
 
 - Using Helm 3.x client:
 
-- ```sh
-  $ helm uninstall my-release
-  ```
+```sh
+-  $ helm uninstall my-release
+```
 
 - Using Helm 2.x client:
 
