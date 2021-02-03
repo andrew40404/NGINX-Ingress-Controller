@@ -169,14 +169,14 @@ To uninstall/delete the release my-release:
 - Using Helm 3.x client:
 
 ```sh
--  $ helm uninstall my-release
+$ helm uninstall my-release
 ```
 
 - Using Helm 2.x client:
 
-- ```sh
+```sh
   $ helm delete --purge my-release
-  ```
+```
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
 
