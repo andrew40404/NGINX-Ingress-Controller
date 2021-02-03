@@ -12,7 +12,8 @@
 
 - You are now at the Kubernetes deployment page. You need to specify some details about the cluster
 
-- Choose a plan **standard** or **free** , the free plan only has one worker node and no subnet, to provision a standard cluster, you will need to upgrade your account to Pay-As-You-Go
+- Choose a plan **standard** or **free**,the free plan only has one worker node and no subnet, to provision a standard cluster, you will need to upgrade 
+  your account to Pay-As-You-Go
 
 - To upgrade to a Pay-As-You-Go account, complete the following steps:
 
@@ -32,18 +33,15 @@
 
 ![NGINX Ingress controller install on IBM cloud_html_72496e6b0b2c820d](https://user-images.githubusercontent.com/5286796/106413409-fe911300-646f-11eb-88ef-f5862350480d.png)
 
--   Choose 	Single or Multizone, in single zone your data is only kept in on 	datacenter, on the
-
-​      other hand with Multizone it is distributed to multiple zones, thus safer in an unforeseen
-
-​      zone failure
+- Choose 	Single or Multizone, in single zone your data is only kept in on 	datacenter, on the
+  other hand with Multizone it is distributed to multiple zones, thus safer in an unforeseen zone failure
 
 - If you wish to use Multizone please set up your account with[VRF
 
 - If at your current location selection, there is no available Virtual LAN, a new VLAN will be created for you
 - Choose a Worker node setup or use the preselected one, set Worker node amount per zone
-- Choose **Master Service Endpoint**. In VRF-enabled accounts, you can choose private-only to make your master accessible on the private network or via VPN tunnel. Choose public-only to make your master publicly accessible. When you have a VRF-enabled account, your cluster is set up by default to use both private and public endpoints.
-   Give desired **tags** to your cluster, for more information visit tags
+- Choose **Master Service Endpoint**. In VRF-enabled accounts, you can choose private-only to make your master accessible on the private network or via VPN tunnel. Choose         public-only to make your master publicly accessible. When you have a VRF-enabled account, your cluster is set up by default to use both private and public endpoints.
+  Give desired **tags** to your cluster, for more information visit tags
 - Click **create**
    • Wait for your cluster to be provisioned
    • Your cluster is ready for usage
@@ -86,8 +84,6 @@ $ cd kubernetes-ingress/deployments/helm-chart
 
 $ git checkout v1.9.1
 ```
-
-
 
 ##    
 
@@ -148,8 +144,6 @@ Helm does not upgrade the CRDs during a release upgrade. Before you upgrade a re
 $ kubectl apply -f crds/
 ```
 
-
-
 Note: The following warning is expected and can be ignored: Warning: kubectl apply should be used on resource created by either kubectl create --save-config or kubectl apply.
 
 ###  
@@ -175,7 +169,6 @@ $ helm upgrade my-release nginx-stable/nginx-ingress
 ##  **Uninstalling the Chart**
 
 
-
 ### **Uninstalling the Release**
 
 To uninstall/delete the release my-release:
@@ -192,8 +185,6 @@ To uninstall/delete the release my-release:
   $ helm delete --purge my-release
   ```
 
-  
-
 The command removes all the Kubernetes components associated with the chart and deletes the release.
 
 ### **Uninstalling the CRDs**
@@ -204,7 +195,3 @@ Uninstalling the release does not remove the CRDs. To remove the CRDs, run:
 $ kubectl delete -f crds/
 ```
 The installation is done. Enjoy!
-
-
-
- 
