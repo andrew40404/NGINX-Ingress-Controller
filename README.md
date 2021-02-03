@@ -88,7 +88,6 @@ This step is required if you’re installing the chart via the helm repository.
 
 ```sh
 $ helm repo add nginx-stable https://helm.nginx.com/stable
-
 $ helm repo update
 ```
 
@@ -175,7 +174,7 @@ $ helm uninstall my-release
 - Using Helm 2.x client:
 
 ```sh
-  $ helm delete --purge my-release
+$ helm delete --purge my-release
 ```
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
