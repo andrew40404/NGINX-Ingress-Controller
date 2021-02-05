@@ -74,17 +74,12 @@ Change your working directory to /deployments/helm-chart:
 
 ```sh
 $ cd kubernetes-ingress/deployments/helm-chart
-
 $ git checkout v1.9.1
 ```
 
-##    
-
-## Adding the Helm Repository
+#### Adding the Helm Repository
 
 This step is required if you’re installing the chart via the helm repository.
-
-###  
 
 ```sh
 $ helm repo add nginx-stable https://helm.nginx.com/stable
@@ -100,13 +95,12 @@ To install the chart with the release name my-release (my-release is the name th
 For NGINX:
 
 ```sh
-*$* *helm install my-release nginx-stable/nginx-ingress*
+$ helm install my-release nginx-stable/nginx-ingress
 ```
-
 For NGINX Plus: (assuming you have pushed the Ingress controller image nginx-plus-ingress to your private registry myregistry.example.com)
 
 ```sh
-*$* *helm install my-release nginx-stable/nginx-ingress --set controller.image.repository**=**myregistry.example.com/nginx-plus-ingress --set controller.nginxplus**=**true*
+$ helm install my-release nginx-stable/nginx-ingress --set controller.image.repository**=**myregistry.example.com/nginx-plus-ingress --set controller.nginxplus**=**true*
 ```
 
 - Using Helm 2.x client:
@@ -126,7 +120,7 @@ $ helm install --name my-release nginx-stable/nginx-ingress --set controller.ima
 ## Upgrading the Chart
 
 
- **Upgrading the CRDs**
+**Upgrading the CRDs**
 
 >Note: If you’re using Kubernetes 1.14, make sure to add --validate=false to the kubectl apply command below.
 
@@ -138,15 +132,11 @@ $ kubectl apply -f crds/
 
 >Note: The following warning is expected and can be ignored: Warning: kubectl apply should be used on resource created by either kubectl create --save-config or kubectl apply.
 
-###  
-
 ### Upgrading the Release
 
 To upgrade the release my-release:
 
 #### Upgrade Using Chart Sources:
-
-####  
 
 ```sh
 $ helm upgrade my-release .
@@ -158,10 +148,10 @@ $ helm upgrade my-release .
 $ helm upgrade my-release nginx-stable/nginx-ingress
 ```
 
-##  **Uninstalling the Chart**
+##  Uninstalling the Chart
 
 
-### **Uninstalling the Release**
+### Uninstalling the Release
 
 To uninstall/delete the release my-release:
 
@@ -170,7 +160,6 @@ To uninstall/delete the release my-release:
 ```sh
 $ helm uninstall my-release
 ```
-
 - Using Helm 2.x client:
 
 ```sh
@@ -179,7 +168,7 @@ $ helm delete --purge my-release
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
 
-### **Uninstalling the CRDs**
+### Uninstalling the CRDs
 
 Uninstalling the release does not remove the CRDs. To remove the CRDs, run:
 
