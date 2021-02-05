@@ -100,7 +100,7 @@ $ helm install my-release nginx-stable/nginx-ingress
 For NGINX Plus: (assuming you have pushed the Ingress controller image nginx-plus-ingress to your private registry myregistry.example.com)
 
 ```sh
-$ helm install my-release nginx-stable/nginx-ingress --set controller.image.repository**=**myregistry.example.com/nginx-plus-ingress --set controller.nginxplus**=**true*
+$ helm install my-release nginx-stable/nginx-ingress --set controller.image.repository=myregistry.example.com/nginx-plus-ingress --set controller.nginxplus=true
 ```
 
 - Using Helm 2.x client:
