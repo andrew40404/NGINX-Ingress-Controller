@@ -53,6 +53,7 @@ The Block Storage plug-in is a persistent, high-performance iSCSI storage that y
 ![NGINX Ingress controller install on IBM cloud_html_80e526461a17c251](https://user-images.githubusercontent.com/5286796/106413402-fd5fe600-646f-11eb-8218-804df318df48.png)
    
    • On the application page, click in the dot next to the cluster, you wish to use
+   
    • Click on Enter or Select Namespace and choose the default Namespace or use a custom one (if you get error please wait 30 minutes for the cluster to finalize)
    
 ![NGINX Ingress controller install on IBM cloud_html_c5a3e57a3c6cd652](https://user-images.githubusercontent.com/5286796/106413398-fc2eb900-646f-11eb-9cfb-72d7c56425cf.png)
