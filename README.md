@@ -42,7 +42,7 @@ This document will describe how to install NGINX Ingress Controller on IBM Cloud
 - Wait for your cluster to be provisioned
 - Your cluster is ready for usage
 
-## Step 2 Deploy IBM Cloud Block Storage plug-in
+## Step 2 - Deploy IBM Cloud Block Storage plug-in
 
 The Block Storage plug-in is a persistent, high-performance iSCSI storage that you can add to your apps by using Kubernetes Persistent Volumes (PVs).
 
@@ -63,7 +63,7 @@ The Block Storage plug-in is a persistent, high-performance iSCSI storage that y
 
 ![NGINX Ingress controller install on IBM cloud_html_bcca9b451248ae84](https://user-images.githubusercontent.com/5286796/106413391-fa64f580-646f-11eb-9103-741f32b89b6b.png)
 
-## Step 3 Installing NGINX Ingress controller
+## Step 3 - Installing NGINX Ingress controller
 
 By default, the Ingress Controller requires a number of custom resource definitions (CRDs) installed on the cluster. Helm 3.x client will install those CRDs. If you’re using a Helm 2.x client, you need to install the CRDs via kubectl:
 
